@@ -62,12 +62,15 @@
 
 def hollow_triangle(n):
 
-    for i in range(2, n-1):
-        print("_" * (n - i +1), end="")
-        print("#" * (1), end="")
+    print("_" * (n-1), end="")
+    print("#", end="")
+    print("_" * (n-1))
+    for i in range(1,n-1):
+        print("_" * (n - i -1), end="")
+        print("#", end="")
         print("_" * (i + i-1), end="")
-        print("#" * (1), end="")
-        print("_" * (n - i+1))
-    print("#" * (3*n-n))
+        print("#", end="")
+        print("_" * (n - i-1))
+    print("#" * (2*n-1))
 
-hollow_triangle(7)
+hollow_triangle(9)
