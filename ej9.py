@@ -15,6 +15,7 @@
 # Calcular el número de lunes que hay entre la fecha de cumpleaños y la fecha actual. Para ello, se puede calcular el número de días que hay entre ambas fechas y dividirlo por 7, ya que una semana tiene 7 días.
 # Si la persona está en edad de trabajar, devolver el número de lunes calculado en el paso 3. En caso contrario, devolver 0.
 
+from ast import main
 from datetime import date # Una función muy curiosa
 
 def count_mondays(birthday, current_date):
@@ -44,3 +45,6 @@ def bad_monday_count(birthday, current_date):
         return 0
 
 print(bad_monday_count(date(2000, 9, 9), date(2022, 12, 19)))
+
+if __name__ == "__main__":
+  main()

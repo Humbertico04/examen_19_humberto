@@ -12,6 +12,7 @@
 
 # Para ello, se puede usar el módulo re y su función search(), que buscará la primera coincidencia en la cadena de texto.
 
+from ast import main
 import re
 
 def detect_nessie(text):
@@ -23,3 +24,6 @@ def detect_nessie(text):
     return "No estás hablando con el Monstruo del Lago Ness."
 
 print(detect_nessie("Siempre va a tratarse de Tree Fiddy"))
+
+if __name__ == "__main__":
+  main()

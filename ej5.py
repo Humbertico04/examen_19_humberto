@@ -60,6 +60,8 @@
 
 # Rellene los espacios con guiones bajos, es decir, _ para que cada línea tenga la misma longitud. ¡Buena suerte y diviértase codificando!
 
+from ast import main
+
 def show_hollow_triangle(n):
     #Función que printea el arbol 
     print("_" * (n-1), end="")
@@ -86,3 +88,6 @@ def hollow_triangle(n):
     return arbol
 
 print(hollow_triangle(9))
+
+if __name__ == "__main__":
+  main()

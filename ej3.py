@@ -11,6 +11,8 @@
 # Ejemplos
 # numbersOfLetters(60) --> ["sixzero", "seven", "five", "four"]
 
+from ast import main
+
 def numbersOfLetters(n):
   # Convertimos el número a su representación en palabras en inglés
   num_as_words = convertToWords(n)
@@ -56,3 +58,6 @@ def convertToWords(n):
   return "".join(digits)
 
 print(numbersOfLetters(60))
+
+if __name__ == "__main__":
+  main()

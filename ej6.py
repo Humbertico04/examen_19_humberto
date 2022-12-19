@@ -38,6 +38,8 @@
 
 # Cuidado: en Fairy Land, ¡los parches de hierba pueden crecer mucho!
 
+from ast import main
+
 def max_cord_length(diametro, porcentage):
     # Calcular el área del parche circular de hierba en pasos de ogro cuadrados
     area = (diametro / 2)**2 * 3.14
@@ -52,3 +54,6 @@ def max_cord_length(diametro, porcentage):
     return int(cuerda)
   
 print(max_cord_length(23, 0.5))
+
+if __name__ == "__main__":
+  main()

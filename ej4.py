@@ -28,6 +28,7 @@
 
 # ¡Buena suerte y que el CÓDIGO te acompañe!
 
+from ast import main
 
 def create_alphabet():
     #Creamos diccionario con todas las letras del alfabeto ordenadas y numeradas
@@ -49,10 +50,10 @@ def diccionario_mates(string):
                 string_dict[i.replace(j, "")] = j
     #Ordenar el diccionario según las letras del alfabeto que se han extraído de los números.
     string_dict = dict(sorted(string_dict.items(), key=lambda item: item[1]))
-    
+
     return string_dict
 
-def do_math(string):
+def do_math(string): #No consigo hacer las operaciones
     diccionario = diccionario_mates(string)
     result = diccionario[0][0]
     for i in range(1, len(diccionario)):
@@ -74,6 +75,8 @@ def do_math(string):
 
 print(do_math("24z6 1x23 y369 89a 900b"))
 
+if __name__ == "__main__":
+  main()
 
 
 

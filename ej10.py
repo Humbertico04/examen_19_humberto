@@ -32,6 +32,8 @@
 
 # Para implementar una función que calcule la secuencia de Xbonacci dado un número X y una firma de X elementos, primero deberíamos crear una función que tome una lista (la firma) y un número entero n y devuelva los primeros n elementos de la secuencia Xbonacci así sembrada. Esto se puede hacer usando un bucle que itere sobre los elementos de la secuencia y calcule el elemento siguiente como la suma de los últimos X elementos.
 
+from ast import main
+
 def xbonacci(firma, n):
     result = []
     result.extend(firma)
@@ -42,3 +44,5 @@ def xbonacci(firma, n):
 
 print(xbonacci([1, 1, 1, 1], 10))
 
+if __name__ == "__main__":
+  main()
