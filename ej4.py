@@ -73,7 +73,7 @@ def do_math(string): #No consigo hacer las operaciones
     result = round(result)
     return result
 
-print(do_math("24z6 1x23 y369 89a 900b"))
+# print(do_math("24z6 1x23 y369 89a 900b"))
 
 if __name__ == "__main__":
   main()
