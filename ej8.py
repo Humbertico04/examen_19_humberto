@@ -16,8 +16,8 @@ import re
 
 def detect_nessie(text):
     text=text.lower()
-    nessie_regex = r"(tree fiddy|3\.50|three fifty)"
-    match = re.search(nessie_regex, text)
+    nessie = r"(tree fiddy|3\.50|three fifty)"
+    match = re.search(nessie, text)
     if match:
         return "¡Estás hablando con el Monstruo del Lago Ness!" 
     return "No estás hablando con el Monstruo del Lago Ness."
