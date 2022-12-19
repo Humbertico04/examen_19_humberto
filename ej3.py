@@ -16,7 +16,7 @@ def numbersOfLetters(n):
   num_as_words = convertToWords(n)
 
   # Si el número de letras es igual a cuatro, devolvemos la matriz con la ruta desde el número original hasta el equilibrio estable
-  if len(num_as_words) == 4:
+  if num_as_words == "four":
     return [num_as_words]
 
   # Si el número de letras no es igual a cuatro, llamamos recursivamente a la función con el número de letras como argumento y agregamos el resultado a la matriz de resultados
