@@ -61,14 +61,13 @@
 # Rellene los espacios con guiones bajos, es decir, _ para que cada línea tenga la misma longitud. ¡Buena suerte y diviértase codificando!
 
 def hollow_triangle(n):
-    # Loop through each row of the pyramid
-    for i in range(n):
-    # Print the required number of spaces before the # symbols
-        print("_" * (n - i - 1), end="")
-    # Print the required number of # symbols
-        print("# ", end="")
-        print("_" * (i + 2), end="")
-        print("# ", end="")
-        print("_" * (n - i - 1))
 
-hollow_triangle(15)
+    for i in range(2, n-1):
+        print("_" * (n - i +1), end="")
+        print("#" * (1), end="")
+        print("_" * (i + i-1), end="")
+        print("#" * (1), end="")
+        print("_" * (n - i+1))
+    print("#" * (3*n-n))
+
+hollow_triangle(7)
