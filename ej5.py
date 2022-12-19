@@ -60,8 +60,8 @@
 
 # Rellene los espacios con guiones bajos, es decir, _ para que cada línea tenga la misma longitud. ¡Buena suerte y diviértase codificando!
 
-def hollow_triangle(n):
-
+def show_hollow_triangle(n):
+    #Función que printea el arbol 
     print("_" * (n-1), end="")
     print("#", end="")
     print("_" * (n-1))
@@ -73,4 +73,16 @@ def hollow_triangle(n):
         print("_" * (n - i-1))
     print("#" * (2*n-1))
 
-hollow_triangle(9)
+
+
+def hollow_triangle(n):
+    #Función que devuelve una lista con el arbol
+    arbol = []
+    arbol.append("_" * (n-1) + "#" + "_" * (n-1))
+    for i in range(1, n-1):
+        arbol.append("_" * (n - i -1) + "#" + "_" * (i + i-1) + "#" + "_" * (n - i-1))
+    arbol.append("#" * (2*n-1))
+
+    return arbol
+
+print(hollow_triangle(9))

@@ -41,3 +41,4 @@ def xbonacci(firma, n):
     return result
 
 print(xbonacci([1, 1, 1, 1], 10))
+
