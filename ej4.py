@@ -37,39 +37,43 @@ def create_alphabet():
         alphabet_dict[i] = alphabet[i-1]
     return alphabet_dict
 
-def do_math(string):
+def diccionario_mates(string):
     alphabet=create_alphabet()
     #Separar la cadena de entrada en una lista de números utilizando el espacio como separador.
     string_list = string.split(' ')
-    print(string_list)
     #Para cada número en la lista, extraiga la letra del alfabeto que se encuentra en el número y almacénela en un diccionario junto con el número entero correspondiente.
     string_dict = {}
     for i in string_list:
         for j in i:
             if j in alphabet.values():
                 string_dict[i.replace(j, "")] = j
-    print(string_dict)
     #Ordenar el diccionario según las letras del alfabeto que se han extraído de los números.
     string_dict = dict(sorted(string_dict.items(), key=lambda item: item[1]))
-    print(string_dict)
-    #Realizar los cálculos especificados en el enunciado utilizando los números ordenados del diccionario. Redondear el resultado final al entero más cercano y devolverlo como resultado de la función.
-    result = 0
-    for i in string_dict:
-        if result == 0:
-            result = int(i)
-        else:
-            result = result + int(i)
+    
+    return string_dict
+
+def do_math(string):
+    diccionario = diccionario_mates(string)
+    result = diccionario[0][0]
+    for i in range(1, len(diccionario)):
+        # Realiza la suma.
+        if i % 4 == 1:
+            result += diccionario[i][0]
+        # Realiza la resta.
+        elif i % 4 == 2:
+            result -= diccionario[i][0]
+        # Realiza la multiplicación.
+        elif i % 4 == 3:
+            result *= diccionario[i][0]
+        # Realiza la división.
+        elif i % 4 == 0:
+            result /= diccionario[i][0]
+    # Redondea el resultado final al entero más cercano.
+    result = round(result)
     return result
 
 print(do_math("24z6 1x23 y369 89a 900b"))
 
-    
-#Quiarle a un string un caracter en concreto
-# string = "24z6 1x23 y369 89a 900b"
-# string = string.replace("z", "")
-
-#Replace key of a dictionary
-# string_dict = {'24z6': 'z', '1x23': 'x', 'y369': 'y', '89a': 'a', '900b': 'b'}
 
 
 

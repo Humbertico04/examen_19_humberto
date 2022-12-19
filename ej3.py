@@ -52,7 +52,7 @@ def convertToWords(n):
   # Invertimos la lista de dígitos para obtener el número en el orden correcto
   digits = digits[::-1]
 
-  # Unimos los dígitos con un guión
+  # Unimos los dígitos
   return "".join(digits)
 
 print(numbersOfLetters(60))
