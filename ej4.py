@@ -1,42 +1,75 @@
-def numberToWord(n):
-  # Crear un diccionario que mapee cada número con su nombre en inglés
-  numbers = {
-    0: "zero",
-    1: "one",
-    2: "two",
-    3: "three",
-    4: "four",
-    5: "five",
-    6: "six",
-    7: "seven",
-    8: "eight",
-    9: "nine"
-  }
-  return numbers[n]
+# Su tarea es escribir una función llamada do_math que reciba un solo argumento. Este argumento es una cadena que contiene varios números delimitados por espacios en blanco. Cada número tiene una sola letra del alfabeto en algún lugar dentro de él.
 
-def numbersOfLetters(n):
-    # Convertir el número a una lista de dígitos
-    digits= []
-    for i in str(n):
-        digits[i] = int(i)
+# Ejemplo: "24z6 1x23 y369 89a 900b"
 
-  # Escribir cada dígito como palabras en inglés y agregarlo a la lista
-    result = []
-    for i in digits:
-        result.append(numberToWord(i))
+# Como se muestra arriba, esta letra del alfabeto puede aparecer en cualquier lugar dentro del número. Tienes que extraer las letras y ordenar los números según sus letras correspondientes.
 
-  # Iterar hasta que la longitud de la lista sea 4
-    while len(result) != 4:
-    # Sumar el número de letras de cada elemento de la lista
-        total = 0
-        for word in result:
-            total += len(word)
+# Ejemplo: "24z6 1x23 y369 89a 900b" se convertirá 89 900 123 369 246 (ordenados según la letra del alfabeto)
 
-    # Escribir el resultado como palabras en inglés y agregarlo a la lista
-    result.append(numberToWord(total))
+# Aquí viene la parte difícil, ahora tienes que hacer una serie de cálculos sobre los números que has extraído.
 
+# La secuencia de cálculos es + - * /. Las reglas matemáticas básicas NO se aplican, debe hacer cada cálculo exactamente en este orden.
+# Esto tiene que funcionar para cualquier tamaño de números enviados (después de la división, volver a la suma, etc.).
+# En el caso de letras del alfabeto duplicadas, debe organizarlas de acuerdo con el número que apareció primero en la cadena de entrada.
+# Recuerde también redondear la respuesta final al entero más cercano.
+# Puedes escribir una función llamada do_math que realice los cálculos descritos en el enunciado del problema. La función debería tomar una sola cadena como argumento y devolver un número entero como resultado. Para resolver el problema, la función puede seguir los siguientes pasos:
+
+# Separe la cadena de entrada en una lista de números utilizando el espacio como separador.
+# Para cada número en la lista, extraiga la letra del alfabeto que se encuentra en el número y almacénela en un diccionario junto con el número entero correspondiente.
+# Ordenar el diccionario según las letras del alfabeto que se han extraído de los números.
+# Realizar los cálculos especificados en el enunciado utilizando los números ordenados del diccionario. Redondear el resultado final al entero más cercano y devolverlo como resultado de la función.
+# Ejemplos:
+
+# "24z6 1x23 y369 89a 900b" = 89 + 900 - 123 * 369 / 246 = 1299
+
+# "24z6 1z23 y369 89z 900b" = 900 + 369 - 246 * 123 / 89 = 1414
+
+# "10a 90x 14b 78u 45a 7b 34y" = 10 + 45 - 14 * 7 / 78 + 90 - 34 = 60
+
+# ¡Buena suerte y que el CÓDIGO te acompañe!
+
+
+def create_alphabet():
+    #Creamos diccionario con todas las letras del alfabeto ordenadas y numeradas
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    alphabet_dict = {}
+    for i in range(1,27):
+        alphabet_dict[i] = alphabet[i-1]
+    return alphabet_dict
+
+def do_math(string):
+    alphabet=create_alphabet()
+    #Separar la cadena de entrada en una lista de números utilizando el espacio como separador.
+    string_list = string.split(' ')
+    print(string_list)
+    #Para cada número en la lista, extraiga la letra del alfabeto que se encuentra en el número y almacénela en un diccionario junto con el número entero correspondiente.
+    string_dict = {}
+    for i in string_list:
+        for j in i:
+            if j in alphabet.values():
+                string_dict[i.replace(j, "")] = j
+    print(string_dict)
+    #Ordenar el diccionario según las letras del alfabeto que se han extraído de los números.
+    string_dict = dict(sorted(string_dict.items(), key=lambda item: item[1]))
+    print(string_dict)
+    #Realizar los cálculos especificados en el enunciado utilizando los números ordenados del diccionario. Redondear el resultado final al entero más cercano y devolverlo como resultado de la función.
+    result = 0
+    for i in string_dict:
+        if result == 0:
+            result = int(i)
+        else:
+            result = result + int(i)
     return result
 
+print(do_math("24z6 1x23 y369 89a 900b"))
+
+    
+#Quiarle a un string un caracter en concreto
+# string = "24z6 1x23 y369 89a 900b"
+# string = string.replace("z", "")
+
+#Replace key of a dictionary
+# string_dict = {'24z6': 'z', '1x23': 'x', 'y369': 'y', '89a': 'a', '900b': 'b'}
 
 
-print(numbersOfLetters(60))
+

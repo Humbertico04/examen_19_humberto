@@ -11,38 +11,48 @@
 # Ejemplos
 # numbersOfLetters(60) --> ["sixzero", "seven", "five", "four"]
 
-def numbersOfLetters(num):
-    if num < 0 or num > 999:
-        return "El número debe estar entre 0 y 999"
-    num = str(num)
-    for i in range(len(num)):
-        if num[i] == "0":
-            num = "zero" + num[i+1:]
-        elif num[i] == "1":
-            num = "one" + num[i+1:]
-        elif num[i] == "2":
-            num = "two" + num[i+1:]
-        elif num[i] == "3":
-            num = "three" + num[i+1:]
-        elif num[i] == "4":
-            num = "four" + num[i+1:]
-        elif num[i] == "5":
-            num = "five" + num[i+1:]
-        elif num[i] == "6":
-            num = "six" + num[i+1:]
-        elif num[i] == "7":
-            num = "seven" + num[i+1:]
-        elif num[i] == "8":
-            num = "eight" + num[i+1:]
-        elif num[i] == "9":
-            num = "nine" + num[i+1:]
-    return num
+def numbersOfLetters(n):
+  # Convertimos el número a su representación en palabras en inglés
+  num_as_words = convertToWords(n)
 
-print(numbersOfLetters(34))
-num = str(10)
-for i in range(len(num)):
-    if num[i] == "0":
-        nuevonum ="zero" + num[i+1:]
-    elif num[i] == "1":
-        nuevonum = "one" + num[i+1:]
-print(nuevonum)
+  # Si el número de letras es igual a cuatro, devolvemos la matriz con la ruta desde el número original hasta el equilibrio estable
+  if len(num_as_words) == 4:
+    return [num_as_words]
+
+  # Si el número de letras no es igual a cuatro, llamamos recursivamente a la función con el número de letras como argumento y agregamos el resultado a la matriz de resultados
+  else:
+    return [num_as_words] + numbersOfLetters(len(num_as_words))
+
+def convertToWords(n):
+  # Si el número es cero, devolvemos "zero"
+  if n == 0:
+    return "zero"
+
+  # Si el número es menor que diez, devolvemos el nombre del número
+  if n < 10:
+    return {
+      1: "one",
+      2: "two",
+      3: "three",
+      4: "four",
+      5: "five",
+      6: "six",
+      7: "seven",
+      8: "eight",
+      9: "nine",
+    }[n]
+
+  # Si el número es mayor o igual a diez, escribimos cada dígito como palabras en inglés y los unimos
+  digits = []
+  while n > 0:
+    digit = n % 10
+    digits.append(convertToWords(digit))
+    n = n // 10
+
+  # Invertimos la lista de dígitos para obtener el número en el orden correcto
+  digits = digits[::-1]
+
+  # Unimos los dígitos con un guión
+  return "".join(digits)
+
+print(numbersOfLetters(60))
